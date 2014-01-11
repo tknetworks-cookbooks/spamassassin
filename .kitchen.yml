@@ -1,0 +1,36 @@
+---
+driver_plugin: vagrant
+driver_config:
+  require_chef_omnibus: false
+
+platforms:
+- name: debian-wheezy
+  driver_config:
+    box: debian-wheezy
+    box_url: http://projects.tsuntsun.net/~nabeken/boxes/vagrant-debian-wheezy.box
+  run_list:
+  - recipe[apt]
+  - recipe[debian]
+
+suites:
+- name: ja
+  encrypted_data_bag_secret_key_path: test/integration/secret_key
+  run_list:
+  - recipe[spamassassin]
+  - recipe[spamassassin::ja]
+  attributes:
+    spamassassin:
+      use_ja_patch: true
+      local:
+        trusted_networks:
+        - "10."
+        - "192.168.0.1"
+        internal_networks:
+        - "10.0.0.0/8"
+        required_score: "7.0"
+        bayes_ignore_header:
+        - "X-Bogosity"
+        - "X-Spam-Flag"
+        - "X-Spam-Status"
+        score:
+        - "FH_DATE_PAST_20XX 0.0"
