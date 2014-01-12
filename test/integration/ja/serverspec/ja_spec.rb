@@ -18,7 +18,7 @@ require 'spec_helper'
 describe 'spamassassin::ja' do
   %w{
     libencode-detect-perl
-    libtext-mecab-perl
+    libmecab-perl
     mecab-ipadic-utf8
   }.each do |pkg|
     describe package(pkg) do

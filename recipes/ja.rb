@@ -19,7 +19,7 @@ case node['platform']
 when 'debian'
   %w{
     libencode-detect-perl
-    libtext-mecab-perl
+    libmecab-perl
     mecab-ipadic-utf8
   }.each do |pkg|
     package pkg do

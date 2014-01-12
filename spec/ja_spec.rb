@@ -34,7 +34,7 @@ describe 'spamassassin::default' do
     it 'should install dependencies for japanese patch' do
       %w{
         libencode-detect-perl
-        libtext-mecab-perl
+        libmecab-perl
         mecab-ipadic-utf8
       }.each do |pkg|
         expect(chef_run).to install_package pkg
