@@ -15,16 +15,16 @@
 #
 
 case node['platform']
-when "debian"
-  package "spamassassin" do
+when 'debian'
+  package 'spamassassin' do
     action :install
   end
 
-  template "/etc/default/spamassassin" do
+  template '/etc/default/spamassassin' do
     owner 'root'
     group 'root'
     mode '644'
-    source "spamassassin.erb"
+    source 'spamassassin.erb'
     notifies :restart, 'service[spamassassin]'
   end
 
@@ -37,7 +37,7 @@ when "debian"
     notifies :restart, 'service[spamassassin]'
   end
 
-  service "spamassassin" do
+  service 'spamassassin' do
     action [:enable, :start]
   end
 end
