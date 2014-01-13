@@ -28,3 +28,4 @@ default['spamassassin']['local']['use_bayes'] = 1
 default['spamassassin']['local']['bayes_auto_learn'] = 1
 default['spamassassin']['local']['ok_languages'] = %w{en}
 default['spamassassin']['local']['ok_locales'] = %w{en}
+default['spamassassin']['local']['include'] = []
