@@ -32,14 +32,14 @@ describe 'spamassassin::ja' do
 
   describe file('/etc/spamassassin/local.cf') do
     it { should be_file }
-    its(:content) {
-      [
-        /^ok_languages en ja$/,
-        /^ok_locales en ja$/,
-      ].each do |l|
-        should match l
-      end
-    }
+    [
+      /^ok_languages en ja$/,
+      /^ok_locales en ja$/,
+    ].each do |l|
+      its(:content) {
+          should match l
+      }
+    end
   end
 
   describe file('/usr/share/perl5/Mail/SpamAssassin/Plugin/Tokenizer/MeCab.pm') do
